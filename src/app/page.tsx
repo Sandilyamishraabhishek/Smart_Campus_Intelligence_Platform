@@ -39,13 +39,21 @@ export default function Dashboard() {
 
   if (loading) {
     return (
-      <div className="h-full w-full flex items-center justify-center">
+      <div className="h-full w-full flex items-center justify-center min-h-[400px]">
         <Loader2 className="w-8 h-8 text-indigo-600 animate-spin" />
       </div>
     );
   }
 
-  const { stats, recommendations, upcomingEvents, heatmap, rewards } = data;
+  if (!data) {
+    return (
+      <div className="h-full w-full flex items-center justify-center min-h-[400px]">
+        <p className="text-slate-500 font-medium">Unable to load dashboard data. Please check if the backend is running.</p>
+      </div>
+    );
+  }
+
+  const { stats = [], recommendations = [], upcomingEvents = [], heatmap = [], rewards = [] } = data;
 
   const handleRedeem = (item: any) => {
     setRedeemingItem(item);

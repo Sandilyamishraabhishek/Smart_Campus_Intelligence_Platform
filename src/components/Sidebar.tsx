@@ -47,7 +47,7 @@ export default function Sidebar() {
 
   const getSidebarItems = () => {
     const baseItems = [
-      { icon: Compass, label: 'Overview', href: '/' },
+      { icon: Compass, label: 'Dashboard', href: '/' },
       { icon: Calendar, label: 'Events', href: '/events' },
     ];
 
@@ -61,8 +61,8 @@ export default function Sidebar() {
 
     if (user?.role === 'faculty') {
       return [
-        ...baseItems,
         { icon: Compass, label: 'Dashboard', href: '/faculty' },
+        { icon: Calendar, label: 'Events', href: '/events' },
         { icon: ShieldCheck, label: 'Attendance', href: '/academics' },
         { icon: BarChart3, label: 'Performance', href: '/analytics' },
       ];
